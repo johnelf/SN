@@ -77,4 +77,10 @@ SN::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  WeiboOAuth2::Config.api_key = "3490843292"
+
+  WeiboOAuth2::Config.api_secret = "5e4060c24a187d14030c27dfad470681"
+
+  WeiboOAuth2::Config.redirect_uri = "http://sina.social-network.com/"
 end
