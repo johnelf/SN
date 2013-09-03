@@ -1,2 +1,3 @@
-Weibo::Config.api_key = ENV['KEY'] || "3490843292"
-Weibo::Config.api_secret = ENV['SECRET'] || "5e4060c24a187d14030c27dfad470681"
+development:
+  api_key:  "3490843292"
+  api_secret: "5e4060c24a187d14030c27dfad470681"

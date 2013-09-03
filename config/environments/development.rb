@@ -26,4 +26,10 @@ SN::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  WeiboOAuth2::Config.api_key = "3490843292"
+
+  WeiboOAuth2::Config.api_secret = "5e4060c24a187d14030c27dfad470681"
+
+  WeiboOAuth2::Config.redirect_uri = "http://sina.social-network.com/"
 end
