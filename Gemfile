@@ -29,8 +29,6 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'weibo_2', '~> 0.1.4'
 
-gem 'weibo'
-
 gem 'mysql2'
 
 group :doc do
