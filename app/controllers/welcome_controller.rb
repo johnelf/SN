@@ -1,6 +1,7 @@
 class WelcomeController < ApplicationController
   def index
     client = WeiboOAuth2::Client.new
-    client.authorize_url
+
+    redirect_to client.authorize_url
   end
 end
