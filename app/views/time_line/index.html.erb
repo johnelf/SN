@@ -1,6 +1,0 @@
-<% if session[:atoken] %>
-    <h1>Friends Timeline</h1>
-    <% @timeline.each do |time| %>
-        <img src=<%= time.user.profile_image_url %>>
-    <% end %>
-<% end %>
