@@ -6,15 +6,15 @@ class CallbackController < ApplicationController
     session[:access_token] = access_token.token
     session[:expires_at] = access_token.expires_at
 
-    if session[:access_token] && !client.authorized?
-      token = client.get_token_from_hash({:access_token => session[:access_token], :expires_at => session[:expires_at]})
-
-      unless token.validated?
-        reset_session
-        redirect client.authorize_url
-        return
-      end
-    end
+    #if session[:access_token] && !client.authorized?
+    #  token = client.get_token_from_hash({:access_token => session[:access_token], :expires_at => session[:expires_at]})
+    #
+    #  unless token.validated?
+    #    reset_session
+    #    redirect client.authorize_url
+    #    return
+    #  end
+    #end
 
     if session[:uid]
       @user = client.users.show_by_uid(session[:uid].to_i)
