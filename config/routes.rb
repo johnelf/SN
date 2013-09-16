@@ -1,5 +1,6 @@
 SN::Application.routes.draw do
-  get "time_line/index"
-  get "callback/index"
-  get "welcome/index"
+  get '/callback/index' => 'callback#index'
+  get '/welcome/index' => 'welcome#index'
+
+  root :to => "welcome#index"
 end
