@@ -82,5 +82,5 @@ SN::Application.configure do
 
   WeiboOAuth2::Config.api_secret = "5e4060c24a187d14030c27dfad470681"
 
-  WeiboOAuth2::Config.redirect_uri = "http://gossip-weibo.herokuapp.com/callback/index"
+  WeiboOAuth2::Config.redirect_uri = "http://gossip-weibo.herokuapp.com"
 end
