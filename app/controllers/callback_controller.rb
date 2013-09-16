@@ -16,9 +16,9 @@ class CallbackController < ApplicationController
     #  end
     #end
 
-    if session[:uid]
-      @user = client.users.show_by_uid(session[:uid].to_i)
-      @statuses = client.statuses
-    end
+    #if session[:uid]
+    #  @user = client.users.show_by_uid(session[:uid].to_i)
+    #  @statuses = client.statuses
+    #end
   end
 end
