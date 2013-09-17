@@ -8,23 +8,16 @@ class HomepageController < ApplicationController
       code = params[:code]
       client_id = "977776791"
       client_secret = "6b1c84bcefcafbf88f08ab22155bd8a7"
-      grant_type = "authorization_code"
       redirect_url = "http://apps.weibo.com/snetwork"
+      request_url = "https://api.weibo.com/oauth2/access_token?code=" +
+                    "#{code}&client_id=#{client_id}&client_secret=#{client_secret}" +
+                    "&grant_type=authorization_code&reirect_url=#{redirect_url}"
 
-      uri = URI.parse("https://api.weibo.com")
-      http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl = true
-      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-      request = Net::HTTP::Post.new("/oauth2/access_token")
-      request.add_field('Content-Type', 'application/json')
-      request.body = {
-          :client_id => client_id,
-          :client_secret => client_secret,
-          :grant_type => grant_type,
-          :code => code,
-          :redirect_url => redirect_url
-      }
-      response = http.request(request)
+      uri = URI.parse(request_url)
+      https = Net::HTTP.new(uri.host,uri.port)
+      https.use_ssl = true
+      req = Net::HTTP::Post.new(uri.path)
+      response = https.request(req)
 
       unless response.nil?
         @body = response.body
