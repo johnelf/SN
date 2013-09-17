@@ -1,6 +1,6 @@
 SN::Application.routes.draw do
 
-  match "/" => "authentication#authenticate", :via => :post
+  match "/" => "homepage#show", :via => :post and :get
 
   root 'homepage#show'
 end
