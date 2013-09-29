@@ -17,6 +17,8 @@ class HomepageController < ApplicationController
       https = Net::HTTP.new(uri.host,uri.port)
       https.use_ssl = true
       req = Net::HTTP::Post.new(uri.path)
+      req['Content-Type'] = 'application/json'
+      req['Accept'] = 'application/json'
       response = https.request(req)
 
       unless response.nil?
