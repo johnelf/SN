@@ -19,5 +19,8 @@ module SN
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    WeiboOAuth2::Config.api_key = "977776791"
+    WeiboOAuth2::Config.api_secret = "6b1c84bcefcafbf88f08ab22155bd8a7"
+    WeiboOAuth2::Config.redirect_uri = "http://apps.weibo.com/snetwork"
   end
 end

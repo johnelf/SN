@@ -1,4 +1,6 @@
 class HomepageController < ApplicationController
+  protect_from_forgery :except => :index
+  skip_before_filter :verify_authenticity_token
 
   def show
     @client_id = "977776791"
@@ -6,19 +8,15 @@ class HomepageController < ApplicationController
 
     unless params[:code].nil?
       @code = params[:code]
-      request_url = "https://api.weibo.com/oauth2/access_token?code=#@code&client_id=977776791&client_secret=6b1c84bcefcafbf88f08ab22155bd8a7&grant_type=authorization_code&redirect_uri=http://apps.weibo.com/snetwork"
 
-      @uri = URI.parse(request_url)
-      https = Net::HTTP.new(@uri.host,@uri.port)
-      https.use_ssl = true
-      req = Net::HTTP::Post.new(uri.path)
-      req['Content-Type'] = 'application/json'
-      req['Accept'] = 'application/json'
-      @response = https.request(req)
+      client = WeiboOAuth2::Client.new
 
-      unless @response.nil?
-        @body = @response.body
-      end
+      client.authorize_url
+
+      @access_token = client.auth_code.get_token(@code)
+
+      logger.info @access_token.inspect
+
     end
   end
 

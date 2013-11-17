@@ -1,10 +1,7 @@
-<% if @body.nil? %>
+<% if @code.nil? %>
     <h1>Homepage</h1>
     <a href="https://api.weibo.com/oauth2/authorize?client_id=<%= @client_id %>&redirect_uri=<%= @redirect_url %>&response_type=code">授权</a>
 <% else %>
-    <h1>call successful</h1>
-    <p>Body: <%= @body.inspect %></p>
-    <p>Code: <%= @code.inspect %></p>
-    <p>URI: <%= @uri.inspect %></p>
-    <p>Response: <%= @response.inspect %></p>
+    <h1>Call Successful</h1>
+    <h1><%= @code %></h1>
 <% end %>
