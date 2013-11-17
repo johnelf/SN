@@ -3,5 +3,5 @@
     <a href="https://api.weibo.com/oauth2/authorize?client_id=<%= @client_id %>&redirect_uri=<%= @redirect_url %>&response_type=code">授权</a>
 <% else %>
     <h1>Call Successful</h1>
-    <h1><%= @code %></h1>
+    <h1><%= @access_token.inspect %></h1>
 <% end %>

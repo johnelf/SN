@@ -15,8 +15,6 @@ class HomepageController < ApplicationController
 
       @access_token = client.auth_code.get_token(@code)
 
-      logger.info @access_token.inspect
-
     end
   end
 
