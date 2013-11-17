@@ -7,6 +7,11 @@ class HomepageController < ApplicationController
     @redirect_url = "http://apps.weibo.com/snetwork"
 
     unless params[:code].nil?
+
+      logger.info "======================="
+
+      logger.info params[:code]
+
       @code = params[:code]
 
       client = WeiboOAuth2::Client.new
@@ -14,6 +19,8 @@ class HomepageController < ApplicationController
       client.authorize_url
 
       @access_token = client.auth_code.get_token(@code)
+
+      logger.info "==========#{@access_token}============="
 
     end
   end
