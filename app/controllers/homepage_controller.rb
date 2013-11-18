@@ -8,19 +8,15 @@ class HomepageController < ApplicationController
 
     unless params[:code].nil?
 
-      logger.info "======================="
-
-      logger.info params[:code]
-
       @code = params[:code]
 
       client = WeiboOAuth2::Client.new
 
       client.authorize_url
 
-      @access_token = client.auth_code.get_token(@code)
+      client.auth_code.get_token(@code)
 
-      logger.info "==========#{@access_token}============="
+      @time_line = client.statuses.user_timeline
 
     end
   end
