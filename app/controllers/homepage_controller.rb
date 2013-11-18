@@ -3,22 +3,39 @@ class HomepageController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def show
-    @client_id = "977776791"
-    @redirect_url = "http://apps.weibo.com/snetwork"
+    client = WeiboOAuth2::Client.new
+    if session[:access_token] && !client.authorized?
+      token = client.get_token_from_hash({:access_token => session[:access_token], :expires_at => session[:expires_at]})
 
-    unless params[:code].nil?
-
-      @code = params[:code]
-
-      client = WeiboOAuth2::Client.new
-
-      client.authorize_url
-
-      client.auth_code.get_token(@code)
-
-      @time_line = client.statuses.user_timeline
-
+      unless token.validated?
+        reset_session
+        redirect '/connect'
+        return
+      end
     end
+    if session[:uid]
+      @user = client.users.show_by_uid(session[:uid])
+      @statuses = client.statuses
+    end
+  end
+
+  def connect
+    client = WeiboOAuth2::Client.new
+    redirect client.authorize_url
+  end
+
+  def callback
+    client = WeiboOAuth2::Client.new
+
+    access_token = client.auth_code.get_token(params[:code].to_s)
+
+    session[:uid] = access_token.params["uid"]
+    session[:access_token] = access_token.token
+    session[:expires_at] = access_token.expires_at
+
+    @user = client.users.show_by_uid(session[:uid].to_i)
+
+    redirect '/'
   end
 
 end

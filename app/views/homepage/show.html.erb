@@ -1,7 +1,4 @@
-<% if @code.nil? %>
-    <h1>Homepage</h1>
-    <a href="https://api.weibo.com/oauth2/authorize?client_id=<%= @client_id %>&redirect_uri=<%= @redirect_url %>&response_type=code">授权</a>
-<% else %>
+<% unless @user %>
     <h1>Call Successful</h1>
-    <h1><%= @time_line.to_json %></h1>
+    <h1><%= @statuses.inspect %></h1>
 <% end %>
