@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    text-align: center;
+}
+
+.homepage {
+    background-image: url(/assets/homepage.jpg);
+    background-size: 800px, 200px;
+    height: 600px;
+}
+
+.authorizeUrl {
+    position: absolute;
+    margin-top: 35px;
+    margin-left: -25px;
+}
+
+.click {
+    width: 97px;
+    height: 92px;
+}

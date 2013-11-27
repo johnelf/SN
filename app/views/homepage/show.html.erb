@@ -1,4 +1,8 @@
-<% unless @user %>
-    <h1>Call Successful</h1>
-    <h1><%= @statuses.inspect %></h1>
-<% end %>
+<%= stylesheet_link_tag "homepage" %>
+
+<div class="homepage">
+    <a class="authorizeUrl" href="<%= @client.authorize_url %>" >
+      <img class="click" src="/assets/click.gif" >
+    </a>
+</div>
+
