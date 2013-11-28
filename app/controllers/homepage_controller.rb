@@ -12,7 +12,7 @@ class HomepageController < ApplicationController
 
       unless @token.validated?
         reset_session
-        redirect '/connect'
+        connect
         return
       end
     end
@@ -44,7 +44,7 @@ class HomepageController < ApplicationController
 
     @user = client.users.show_by_uid(session[:uid].to_i)
 
-    redirect '/'
+    show
   end
 
 end
