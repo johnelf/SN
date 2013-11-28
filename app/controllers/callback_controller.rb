@@ -7,7 +7,8 @@ class CallbackController < ApplicationController
     puts "callback............."
     client = WeiboOAuth2::Client.new
 
-    access_token = client.auth_code.get_token(params[:code].to_s)
+    code = params[:code]
+    access_token = client.auth_code.get_token(code.to_s)
 
     session[:uid] = access_token.params["uid"]
     session[:access_token] = access_token.token
@@ -15,7 +16,7 @@ class CallbackController < ApplicationController
 
     @user = client.users.show_by_uid(session[:uid].to_i)
 
-    redirect_to '/'
+    #redirect_to '/'
   end
 
 end
