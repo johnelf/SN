@@ -1,8 +1,11 @@
 <%= stylesheet_link_tag "homepage" %>
 
-<div class="homepage">
-    <a class="authorizeUrl" href="<%= @client.authorize_url %>" >
-      <%= image_tag 'click.gif', :class => "click" %>
-    </a>
-</div>
-
+<% unless @user %>
+    <h1><%= @user.id %></h1>
+<% else %>
+    <div class="homepage">
+      <a class="authorizeUrl" href="<%= @client.authorize_url %>">
+        <%= image_tag 'click.gif', :class => "click" %>
+      </a>
+    </div>
+<% end %>
