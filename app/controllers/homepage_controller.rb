@@ -12,7 +12,7 @@ class HomepageController < ApplicationController
 
       unless @token.validated?
         reset_session
-        connect
+        redirect_to '/connect'
         return
       end
     end
@@ -28,7 +28,7 @@ class HomepageController < ApplicationController
     client = WeiboOAuth2::Client.new
     puts "========================================"
     puts "connect..............."
-    redirect client.authorize_url
+    redirect_to client.authorize_url
   end
 
   def callback
@@ -44,23 +44,7 @@ class HomepageController < ApplicationController
 
     @user = client.users.show_by_uid(session[:uid].to_i)
 
-    if session[:access_token] && !client.authorized?
-      puts "in session..............."
-
-      @token = client.get_token_from_hash({:access_token => session[:access_token], :expires_at => session[:expires_at]})
-
-      unless @token.validated?
-        reset_session
-        connect
-        return
-      end
-    end
-
-    if session[:uid]
-      puts "user info...................."
-      @user = client.users.show_by_uid(session[:uid])
-      @statuses = client.statuses
-    end
+    redirect_to '/'
   end
 
 end
