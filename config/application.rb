@@ -21,7 +21,7 @@ module SN
     # config.i18n.default_locale = :de
     WeiboOAuth2::Config.api_key = "977776791"
     WeiboOAuth2::Config.api_secret = "6b1c84bcefcafbf88f08ab22155bd8a7"
-    WeiboOAuth2::Config.redirect_uri = "http://apps.weibo.com/snetwork/callback"
+    WeiboOAuth2::Config.redirect_uri = "http://secure-river-9711.herokuapp.com/callback"
     #WeiboOAuth2::Config.redirect_uri = "http://127.0.0.1/callback"
   end
 end
