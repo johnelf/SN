@@ -3,8 +3,11 @@ class HomepageController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def show
+    logger.info "show..............."
     @client = WeiboOAuth2::Client.new
     if session[:access_token] && !@client.authorized?
+      logger.info "in session..............."
+
       @token = @client.get_token_from_hash({:access_token => session[:access_token], :expires_at => session[:expires_at]})
 
       unless @token.validated?
@@ -15,7 +18,7 @@ class HomepageController < ApplicationController
     end
 
     if session[:uid]
-      debugger
+      logger.info "user info...................."
       @user = @client.users.show_by_uid(session[:uid])
       @statuses = @client.statuses
     end
@@ -23,6 +26,8 @@ class HomepageController < ApplicationController
 
   def connect
     client = WeiboOAuth2::Client.new
+    logger.info "========================================"
+    logger.info "connect..............."
     redirect client.authorize_url
   end
 
