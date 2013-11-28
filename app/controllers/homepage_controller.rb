@@ -32,6 +32,8 @@ class HomepageController < ApplicationController
   end
 
   def callback
+
+    puts "callback.............++++++++"
     client = WeiboOAuth2::Client.new
 
     access_token = client.auth_code.get_token(params[:code].to_s)
