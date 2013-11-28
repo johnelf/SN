@@ -33,7 +33,7 @@ class HomepageController < ApplicationController
 
   def callback
 
-    puts "callback.............++++++++"
+    puts "callback............."
     client = WeiboOAuth2::Client.new
 
     access_token = client.auth_code.get_token(params[:code].to_s)
@@ -44,7 +44,23 @@ class HomepageController < ApplicationController
 
     @user = client.users.show_by_uid(session[:uid].to_i)
 
-    show
+    if session[:access_token] && !client.authorized?
+      puts "in session..............."
+
+      @token = client.get_token_from_hash({:access_token => session[:access_token], :expires_at => session[:expires_at]})
+
+      unless @token.validated?
+        reset_session
+        connect
+        return
+      end
+    end
+
+    if session[:uid]
+      puts "user info...................."
+      @user = client.users.show_by_uid(session[:uid])
+      @statuses = client.statuses
+    end
   end
 
 end
