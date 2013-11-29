@@ -1,7 +1,5 @@
 class CallbackController < ApplicationController
 
-  after_action :allow_weibo_iframe
-
   def callback
     puts "hey call me back!"
     client = WeiboOAuth2::Client.new
@@ -20,12 +18,6 @@ class CallbackController < ApplicationController
     @user = client.users.show_by_uid(session[:uid].to_i)
 
     respond_to :nothing => true
-  end
-
-  private
-
-  def allow_weibo_iframe
-    response.headers['X-Frame-Options'] = 'ALLOW-FROM http://apps.weibo.com/'
   end
 
 end
