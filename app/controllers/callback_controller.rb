@@ -3,6 +3,7 @@ class CallbackController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def callback
+    puts "hey call me back!"
     client = WeiboOAuth2::Client.new
 
     code = params[:code]
