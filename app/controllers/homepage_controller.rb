@@ -14,7 +14,6 @@ class HomepageController < ApplicationController
       render :text => "homepage/success", :status => 201
     end
 
-    render :file => "homepage/show", :status => 200
   end
 
 end
