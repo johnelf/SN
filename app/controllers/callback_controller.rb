@@ -1,6 +1,6 @@
 class CallbackController < ApplicationController
 
-  after_action :allow_iframe
+  after_action :allow_weibo_iframe
 
   def callback
     puts "hey call me back!"
@@ -24,8 +24,8 @@ class CallbackController < ApplicationController
 
   private
 
-  def allow_iframe
-    response.headers.except! 'X-Frame-Options'
+  def allow_weibo_iframe
+    response.headers['X-Frame-Options'] = 'ALLOW-FROM http://apps.weibo.com/'
   end
 
 end
