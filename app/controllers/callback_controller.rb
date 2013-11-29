@@ -19,7 +19,6 @@ class CallbackController < ApplicationController
 
     @user = client.users.show_by_uid(session[:uid].to_i)
 
-    respond_with :text => "success", :status => 201
   end
 
 end
