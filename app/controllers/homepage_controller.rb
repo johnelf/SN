@@ -4,6 +4,9 @@ class HomepageController < ApplicationController
 
   def show
     @client = WeiboOAuth2::Client.new
+    if session[:access_token] && !@client.authorized?
+          return
+    end
 
     if session[:uid]
       puts "user info...................."
