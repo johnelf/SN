@@ -1,18 +1,7 @@
 <%= stylesheet_link_tag "homepage" %>
 
-<% unless @statuses %>
-    <div>
-        <% @statuses.friends_timeline.statuses.each do |status| %>
-            <% status.text %>
-            <% if status.bmiddle_pic %>
-                <% image_tag status.bmiddle_pic %>
-            <% end %>
-        <% end %>
-    </div>
-<% else %>
-    <div class="homepage">
-      <a class="authorizeUrl" href="<%= @client.authorize_url %>">
-        <%= image_tag 'click.gif', :class => "click" %>
-      </a>
-    </div>
-<% end %>
+<div class="homepage">
+  <a class="authorizeUrl" href="<%= @client.authorize_url %>">
+    <%= image_tag 'click.gif', :class => "click" %>
+  </a>
+</div>
