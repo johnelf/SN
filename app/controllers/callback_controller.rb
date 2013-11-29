@@ -16,7 +16,7 @@ class CallbackController < ApplicationController
 
     @user = client.users.show_by_uid(session[:uid].to_i)
 
-    #redirect_to '/'
+    redirect_to '/'
   end
 
 end
