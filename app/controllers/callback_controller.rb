@@ -1,6 +1,6 @@
 class CallbackController < ApplicationController
 
-  skip_before_filter :verify_authenticity_token
+  after_action :allow_iframe
 
   def callback
     puts "hey call me back!"
@@ -19,6 +19,13 @@ class CallbackController < ApplicationController
 
     @user = client.users.show_by_uid(session[:uid].to_i)
 
+    respond_to :nothing => true
+  end
+
+  private
+
+  def allow_iframe
+    response.headers.except! 'X-Frame-Options'
   end
 
 end
