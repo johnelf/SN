@@ -1,8 +1,6 @@
 <%= stylesheet_link_tag "homepage" %>
 
-<% unless @user %>
-    <h1><%= @user.id %></h1>
-    <h2><%= @user.name %></h2>
+<% unless @statuses %>
     <div>
         <% @statuses.friends_timeline.statuses.each do |status| %>
             <% status.text %>

@@ -7,7 +7,7 @@ class HomepageController < ApplicationController
 
     if session[:uid]
       puts "user info...................."
-      @user = @client.users.show_by_uid(session[:uid])
+      #@user = @client.users.show_by_uid(session[:uid])
       @statuses = @client.statuses
     end
   end
