@@ -10,7 +10,7 @@ class CallbackController < ApplicationController
     access_token = client.auth_code.get_token(code.to_s)
 
     puts "============================="
-    puts "access_token: " + access_token
+    puts access_token.inspect
     puts "============================="
 
     session[:uid] = access_token.params["uid"]
