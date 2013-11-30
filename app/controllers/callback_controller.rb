@@ -18,6 +18,7 @@ class CallbackController < ApplicationController
     session[:expires_at] = access_token.expires_at
 
     @user = client.users.show_by_uid(session[:uid].to_i)
+    @statuses = client.statuses
 
   end
 
