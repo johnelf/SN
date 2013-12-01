@@ -8,7 +8,7 @@
   </div>
 
   <% @friends.users.each do |friend| %>
-      <p style="blue"><% friend.name %></p>
+      <p><% friend.name %></p>
   <% end %>
 
   <% if @user.verified.eql? "true" %>
