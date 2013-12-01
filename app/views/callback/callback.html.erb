@@ -2,21 +2,19 @@
   <p><%= @user.name %></p>
   <p>粉丝数： <%= @user.followers_count %></p>
   <p>关注：<%= @user.friends_count %></p>
-  <p>微博数：<%= @user.statuses_count %></p>
-  <p>收藏：<%= @user.favourites_count %></p>
 
   <div>
     <%= image_tag @user.profile_image_url %>
   </div>
 
-  =================
-  <%= @statuses.inspect %>
-  =================
-
   <% if @user.verified.eql? "true" %>
       <p>大V</p>
   <% else %>
       <p>普通用户</p>
+  <% end %>
+
+  <% @comments_by_me.each do |comment|  %>
+      <p><% comment %></p>
   <% end %>
 
 
