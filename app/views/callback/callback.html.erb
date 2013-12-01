@@ -7,7 +7,7 @@
     <%= image_tag @user.profile_image_url %>
   </div>
 
-  <%= @friends.users.each do |friend| %>
+  <% @friends.users.each do |friend| %>
       <p style="blue"><% friend.name %></p>
   <% end %>
 
