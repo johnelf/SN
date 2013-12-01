@@ -4,11 +4,14 @@
   <p>关注：<%= @user.friends_count %></p>
   <p>微博数：<%= @user.statuses_count %></p>
   <p>收藏：<%= @user.favourites_count %></p>
-  <p>创建时间：<%= @user.created_at %></p>
 
   <div>
     <%= image_tag @user.profile_image_url %>
   </div>
+
+  =================
+  <%= @statuses.inspect %>
+  =================
 
   <% if @user.verified.eql? "true" %>
       <p>大V</p>
@@ -22,5 +25,5 @@
   <% else %>
       <p>女</p>
   <% end %>
-  <p>粉丝数：<%= @user.bi_followers_count %></p>
+  <p>互粉数：<%= @user.bi_followers_count %></p>
 </div>
