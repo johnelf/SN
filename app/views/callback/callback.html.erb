@@ -7,9 +7,8 @@
     <%= image_tag @user.profile_image_url %>
   </div>
 
-  <% @friends.users.each do |friend| %>
-      <p><% friend.name %></p>
-  <% end %>
+  +++++++++++++++++<% @friends.inspect %>
+  ============
 
   <% if @user.verified.eql? "true" %>
       <p>大V</p>
