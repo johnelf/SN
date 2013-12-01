@@ -1,8 +1,26 @@
 <div>
-  <p>姓名<%= @user.name %></p>
+  <p><%= @user.name %></p>
+  <p>粉丝数： <%= @user.followers_count %></p>
+  <p>关注：<%= @user.friends_count %></p>
+  <p>微博数：<%= @user.statuses_count %></p>
+  <p>收藏：<%= @user.favourites_count %></p>
+  <p>创建时间：<%= @user.created_at %></p>
+
   <div>
-    <% image_tag @user.profile_image_url %>
+    <%= image_tag @user.profile_image_url %>
   </div>
-  <p>性别<%= @user.gender %></p>
-  <p>粉丝数<%= @user.bi_followers_count %></p>
+
+  <% if @user.verified.eql? "true" %>
+      <p>大V</p>
+  <% else %>
+      <p>普通用户</p>
+  <% end %>
+
+
+  <% if @user.gender.eql? "m" %>
+      <p>男</p>
+  <% else %>
+      <p>女</p>
+  <% end %>
+  <p>粉丝数：<%= @user.bi_followers_count %></p>
 </div>
