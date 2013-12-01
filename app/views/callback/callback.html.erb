@@ -13,11 +13,6 @@
       <p>普通用户</p>
   <% end %>
 
-  <% @comments_by_me.each do |comment|  %>
-      <p><% comment.text %></p>
-  <% end %>
-
-
   <% if @user.gender.eql? "m" %>
       <p>男</p>
   <% else %>
