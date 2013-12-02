@@ -15,8 +15,6 @@ class CallbackController < ApplicationController
     @user = client.users.show_by_uid(session[:uid].to_i)
     @friends = client.friendships.friends(:uid => @user.id.to_s)
 
-    @statuses = client.statuses
-
   end
 
 end

@@ -9,7 +9,7 @@
     <%= image_tag @user.profile_image_url %>
   </div>
 
-  <% @friends.each do |friend| %>
+  <% @friends.users.each do |friend| %>
       <p> <%= friend.name %> </p>
   <% end %>
 
