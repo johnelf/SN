@@ -10,7 +10,10 @@
   </div>
 
   <% @friends.users.each do |friend| %>
-      <p> <%= friend.name %> </p>
+      <div class="friends">
+        <p style="float: left"> <%= friend.name %> </p>
+        <div style="display:inline-block;float: right"><%= image_tag friend.profile_image_url %></div>
+      </div>
   <% end %>
 
   <% if @user.verified.eql? "true" %>
