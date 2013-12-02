@@ -4,7 +4,7 @@ class CallbackController < ApplicationController
 
   def callback
     client = WeiboOAuth2::Client.new
-                                throw new UnboundMethod
+
     code = params[:code]
     access_token = client.auth_code.get_token(code.to_s)
 
@@ -13,8 +13,7 @@ class CallbackController < ApplicationController
     session[:expires_at] = access_token.expires_at
 
     @user = client.users.show_by_uid(session[:uid].to_i)
-    @friendships = client.friendships
-    @friends = @friendships.friends({:uid => @user.id})
+    @friends = client.friendships.friends(:uid => @user.id)
 
     @statuses = client.statuses
 

@@ -1,15 +1,17 @@
 <div>
   <p><%= @user.name %></p>
+
   <p>粉丝数： <%= @user.followers_count %></p>
+
   <p>关注：<%= @user.friends_count %></p>
 
   <div>
     <%= image_tag @user.profile_image_url %>
   </div>
 
-  +++++++++++++++++<% @friendships.inspect %>
-  +++++++++++++++++<% @friends.inspect %>
-  ============
+  <% @friends.each do |friend| %>
+      <p> <%= friend.name %> </p>
+  <% end %>
 
   <% if @user.verified.eql? "true" %>
       <p>大V</p>
