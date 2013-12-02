@@ -4,7 +4,7 @@ class CallbackController < ApplicationController
 
   def callback
     client = WeiboOAuth2::Client.new
-
+                                throw new UnboundMethod
     code = params[:code]
     access_token = client.auth_code.get_token(code.to_s)
 
