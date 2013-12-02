@@ -14,7 +14,7 @@ class CallbackController < ApplicationController
 
     @user = client.users.show_by_uid(session[:uid].to_i)
     @friendships = client.friendships
-    @friends = @friendships.friends(:uid => @user.id) if !@friendships.nil?
+    @friends = @friendships.friends({:uid => @user.id})
 
     @statuses = client.statuses
 
