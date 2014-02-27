@@ -9,6 +9,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'weibo_2', '~> 0.1.4'
 gem 'mysql2'
+gem 'newrelic_rpm'
+
 group :production do
   gem 'pg'
 end
