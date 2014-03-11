@@ -142,6 +142,8 @@ common: &default_settings
     # helpful for pinpointing where long SQL calls originate from.
     stack_trace_threshold: 0.500
 
+    explain_enabled: false
+
     # Determines whether the agent will capture query plans for slow
     # SQL queries.  Only supported in mysql and postgres.  Should be
     # set to false when using other adapters.
